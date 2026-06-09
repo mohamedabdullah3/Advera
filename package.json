@@ -1,10 +1,5 @@
 {
-  "name": "advera-landing-page",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Standalone Arabic RTL landing page for Advera.",
   "scripts": {
-    "dev": "python3 -m http.server 5173",
-    "start": "python3 -m http.server 5173"
+    "dev": "python3 -m http.server 5173"
   }
 }
