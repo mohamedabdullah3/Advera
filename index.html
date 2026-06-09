@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advera | وكالة كشف تسريبات النمو</title>
+
+  <style>
+    :root {
+      --bg: #080b12;
+      --card: #151b2b;
+      --primary: #7c5cff;
+      --primary-2: #00d4ff;
+      --accent: #18e6a3;
+      --text: #f5f7fb;
+      --muted: #aab2c5;
+      --border: rgba(255, 255, 255, 0.1);
+      --warning: #ffd166;
+      --danger: #ff6b6b;
+      --radius: 22px;
+      --shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
+      --container: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Tahoma", "Arial", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(124, 92, 255, 0.22), transparent 34%),
+        radial-gradient(circle at top left, rgba(0, 212, 255, 0.18), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      font-size: 14px;
+      backdrop-filter: blur(12px);
+    }
+
+    .badge span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 15px;
+      font-family: inherit;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      box-shadow: 0 14px 35px rgba(124, 92, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 45px rgba(0, 212, 255, 0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-3px);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 11, 18, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      padding: 6px 12px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+      direction: ltr;
+    }
+
+    .logo-img {
+      display: block;
+      height: 46px;
+      width: auto;
+      max-width: 210px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 9px 12px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .hero {
+      padding: 92px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 68px);
+      line-height: 1.15;
+      margin: 22px 0 22px;
+      letter-spacing: -1.5px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff, #9caeff, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .mini-stat {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dashboard {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .dashboard::before {
+      content: "";
+      position: absolute;
+      inset: -80px -80px auto auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(0, 212, 255, 0.22);
+      filter: blur(40px);
+    }
+
+    .dash-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dash-title {
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    .dash-pill {
+      color: var(--accent);
+      background: rgba(24, 230, 163, 0.1);
+      border: 1px solid rgba(24, 230, 163, 0.25);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .score-card {
+      position: relative;
+      z-index: 2;
+      border-radius: 22px;
+      padding: 22px;
+      background: rgba(0,0,0,0.24);
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+
+    .score-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .score-number {
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff, var(--primary-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .score-label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bar-item span {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .bar {
+      height: 8px;
+      background: rgba(255,255,255,0.09);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      border-radius: 999px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .metric {
+      background: rgba(0,0,0,0.18);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 4px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      max-width: 850px;
+      margin-bottom: 42px;
+    }
+
+    .section-head.center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: rgba(124, 92, 255, 0.16);
+      border: 1px solid rgba(124, 92, 255, 0.25);
+      margin-bottom: 16px;
+      font-size: 22px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .real-proof {
+      background: #eef1f6;
+      color: #121826;
+      padding: 90px 0;
+    }
+
+    .real-proof .section-head h2 {
+      color: #121826;
+    }
+
+    .real-proof .section-head p {
+      color: #647084;
+    }
+
+    .real-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .real-proof-card {
+      background: #ffffff;
+      border: 1px solid rgba(18, 24, 38, 0.08);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 16px 38px rgba(18, 24, 38, 0.08);
+      min-height: 205px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .real-proof-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: rgba(37, 99, 235, 0.12);
+      color: #2563eb;
+      font-size: 20px;
+      margin-bottom: 18px;
+      margin-right: auto;
+    }
+
+    .real-proof-card strong {
+      display: block;
+      color: #2563eb;
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.1;
+      margin-bottom: 8px;
+      direction: rtl;
+    }
+
+    .real-proof-card h3 {
+      color: #121826;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .real-proof-card p {
+      color: #647084;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .real-proof-note {
+      margin-top: 24px;
+      border: 1px solid rgba(18, 24, 38, 0.1);
+      border-radius: 14px;
+      padding: 16px 22px;
+      color: #647084;
+      text-align: center;
+      background: rgba(255,255,255,0.4);
+      font-size: 14px;
+    }
+
+    .curiosity-box,
+    .positioning-box,
+    .bonus-box {
+      background:
+        linear-gradient(135deg, rgba(124,92,255,0.18), rgba(0,212,255,0.1)),
+        rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 42px;
+      box-shadow: var(--shadow);
+    }
+
+    .curiosity-box h2,
+    .positioning-box h2,
+    .bonus-box h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.3;
+      margin: 18px 0;
+    }
+
+    .curiosity-box p,
+    .positioning-box p,
+    .bonus-box p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 960px;
+    }
+
+    .comparison {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .compare-card {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .compare-card h3 {
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    .compare-card ul,
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .compare-card.see li::before {
+      content: "👀";
+      margin-left: 8px;
+    }
+
+    .compare-card.hidden li::before {
+      content: "⚠️";
+      margin-left: 8px;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: var(--accent);
+      margin-left: 8px;
+      font-weight: 900;
+    }
+
+    .not-list li::before {
+      content: "✕";
+      color: var(--danger);
+      margin-left: 8px;
+      font-weight: 900;
+    }
+
+    .offer-wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .offer-card {
+      background:
+        linear-gradient(135deg, rgba(24, 230, 163, 0.12), rgba(124, 92, 255, 0.1)),
+        rgba(255,255,255,0.055);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .offer-card h3 {
+      font-size: 32px;
+      line-height: 1.25;
+      margin: 16px 0 12px;
+    }
+
+    .offer-card p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 22px;
+    }
+
+    .stages {
+      display: grid;
+      gap: 16px;
+    }
+
+    .stage {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .stage-number {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--primary-2);
+    }
+
+    .stage h3 {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .stage p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .faq-card {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+
+    .faq-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .faq-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta {
+      padding: 90px 0;
+    }
+
+    .cta-box {
+      text-align: center;
+      padding: 54px 28px;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at top, rgba(0, 212, 255, 0.2), transparent 35%),
+        linear-gradient(135deg, rgba(124,92,255,0.22), rgba(255,255,255,0.06));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      max-width: 780px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .form {
+      max-width: 760px;
+      margin: 30px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      text-align: right;
+    }
+
+    .form input,
+    .form select,
+    .form textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.25);
+      color: var(--text);
+      outline: none;
+      font-family: inherit;
+    }
+
+    .form input::placeholder,
+    .form textarea::placeholder {
+      color: #778095;
+    }
+
+    .form textarea {
+      grid-column: 1 / -1;
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form button {
+      grid-column: 1 / -1;
+    }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1000px) {
+      .hero-grid,
+      .offer-wrap,
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .real-proof-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        right: 16px;
+        left: 16px;
+        background: rgba(16, 21, 34, 0.98);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        padding-top: 58px;
+      }
+
+      .logo {
+        padding: 5px 9px;
+        border-radius: 14px;
+      }
+
+      .logo-img {
+        height: 34px;
+        max-width: 160px;
+      }
+
+      .hero-points,
+      .grid-3,
+      .grid-2,
+      .metric-grid,
+      .form,
+      .faq-grid,
+      .real-proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form textarea,
+      .form button {
+        grid-column: auto;
+      }
+
+      .curiosity-box,
+      .positioning-box,
+      .bonus-box {
+        padding: 28px;
+      }
+
+      .hero h1 {
+        letter-spacing: -0.5px;
+      }
+
+      .stage {
+        grid-template-columns: 1fr;
+      }
+
+      .score-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo" aria-label="Advera">
+        <img src="./advera-logo-transparent.png" alt="Advera Logo" class="logo-img" />
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#fit">لمن مناسب</a>
+        <a href="#problem">المشكلة</a>
+        <a href="#method">المنهجية</a>
+        <a href="#deliverables">المخرجات</a>
+        <a href="#contact">احجز التحليل</a>
+      </nav>
+
+      <button class="mobile-menu" id="menuBtn">القائمة</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
+          <div class="badge">
+            <span></span>
+            وكالة كشف تسريبات النمو لبراندات التجارة الإلكترونية في الخليج
+          </div>
+
+          <h1>
+            قبل ما تزود ميزانية الإعلانات…
+            <span class="gradient-text">اكتشف التسريب الخفي</span>
+            في نظام النمو
+          </h1>
+
+          <p>
+            تحليل عملي لبراندات التجارة الإلكترونية في الخليج يكشف هل المشكلة في الإعلانات،
+            التتبع، رحلة التحويل، إدارة علاقات العملاء، العروض، أو ما بعد الشراء —
+            ثم يحدد أولويات الإصلاح لأول 90 يوم.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">احصل على تحليل تسريب النمو</a>
+            <a href="#deliverables" class="btn btn-secondary">ماذا ستحصل؟</a>
+          </div>
+
+          <div class="hero-points">
+            <div class="mini-stat">
+              <strong>6 زوايا</strong>
+              <span>نقرأ النظام كاملًا</span>
+            </div>
+            <div class="mini-stat">
+              <strong>بطاقة تقييم</strong>
+              <span>تقييم واضح لنقاط التسريب</span>
+            </div>
+            <div class="mini-stat">
+              <strong>90 يوم</strong>
+              <span>خارطة إصلاح عملية</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard">
+          <div class="dash-top">
+            <div class="dash-title">بطاقة تقييم تسريب النمو</div>
+            <div class="dash-pill">نموذج توضيحي</div>
+          </div>
+
+          <div class="score-card">
+            <div class="score-header">
+              <div>
+                <div class="score-number">64</div>
+                <div class="score-label">درجة نظام النمو / 100</div>
+              </div>
+              <div class="badge"><span></span> تم رصد تسريب</div>
+            </div>
+
+            <div class="bar-list">
+              <div class="bar-item">
+                <span><b>التتبع</b><b>52%</b></span>
+                <div class="bar"><i style="width:52%"></i></div>
+              </div>
+
+              <div class="bar-item">
+                <span><b>إدارة علاقات العملاء</b><b>38%</b></span>
+                <div class="bar"><i style="width:38%"></i></div>
+              </div>
+
+              <div class="bar-item">
+                <span><b>متوسط قيمة الطلب</b><b>61%</b></span>
+                <div class="bar"><i style="width:61%"></i></div>
+              </div>
+
+              <div class="bar-item">
+                <span><b>الإعلانات المدفوعة</b><b>74%</b></span>
+                <div class="bar"><i style="width:74%"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <span>أكبر تسريب</span>
+              <strong>إدارة علاقات العملاء</strong>
+            </div>
+            <div class="metric">
+              <span>الخطوة التالية</span>
+              <strong>أصلحه أولًا</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="authority" class="real-proof">
+      <div class="container">
+        <div class="section-head center">
+          <span style="color:#2563eb; font-weight:700;">الأرقام تتكلم</span>
+          <h2>خبرة حقيقية — مش كلام</h2>
+          <p>
+            أرقام ومنهجيات مبنية على تشغيل وتحليل أنظمة نمو فعلية، وليست وعودًا بنتيجة لكل براند.
+          </p>
+        </div>
+
+        <div class="real-proof-grid">
+          <div class="real-proof-card">
+            <div>
+              <div class="real-proof-icon">▤</div>
+              <strong>6 زوايا</strong>
+              <h3>تحليل شامل</h3>
+              <p>نقرأ الإعلانات، التتبع، رحلة التحويل، الاحتفاظ، قيمة الطلب، والتقارير.</p>
+            </div>
+          </div>
+
+          <div class="real-proof-card">
+            <div>
+              <div class="real-proof-icon">★</div>
+              <strong>100/</strong>
+              <h3>بطاقة تقييم واضحة</h3>
+              <p>نعطيك درجة واضحة لنظام النمو بدل التقييمات العامة والانطباعات.</p>
+            </div>
+          </div>
+
+          <div class="real-proof-card">
+            <div>
+              <div class="real-proof-icon">♙</div>
+              <strong>90 يوم</strong>
+              <h3>خارطة إصلاح</h3>
+              <p>نحدد أولويات إصلاح عملية لأول 90 يوم بناءً على أكبر تسريب.</p>
+            </div>
+          </div>
+
+          <div class="real-proof-card">
+            <div>
+              <div class="real-proof-icon">⌁</div>
+              <strong>1 تسريب</strong>
+              <h3>قد يغيّر القرار</h3>
+              <p>أحيانًا إصلاح نقطة واحدة في التتبع أو الاحتفاظ يغير قراءة الأداء بالكامل.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="real-proof-note">
+          هذه المؤشرات توضّح طريقة عملنا في التشخيص — وليست وعدًا بنتيجة واحدة لكل براند.
+        </div>
+      </div>
+    </section>
+
+    <section id="fit">
+      <div class="container">
+        <div class="section-head center">
+          <h2>هل هذا التحليل مناسب لك؟</h2>
+          <p>
+            الهدف ليس جذب أي عميل. الهدف أن نعمل مع براند لديه بيانات فعلية ومشكلة نمو تستحق التشخيص.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="icon">✅</div>
+            <h3>مناسب لك إذا:</h3>
+            <ul class="check-list">
+              <li>لديك براند تجارة إلكترونية شغال.</li>
+              <li>تصرف على الإعلانات شهريًا.</li>
+              <li>عندك مبيعات لكن الربحية غير واضحة.</li>
+              <li>تكلفة الاستحواذ مرتفعة أو العائد على الإنفاق الإعلاني متذبذب.</li>
+              <li>العملاء لا يعودون للشراء.</li>
+              <li>إدارة علاقات العملاء ضعيفة أو غير مفعّلة.</li>
+              <li>تقارير المنصات متضاربة ولا تحسم القرار.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="icon">🚫</div>
+            <h3>غير مناسب لك إذا:</h3>
+            <ul class="check-list not-list">
+              <li>ما زلت في مرحلة ما قبل الإطلاق.</li>
+              <li>لا تملك بيانات أو مبيعات فعلية.</li>
+              <li>تبحث عن سر سريع لرفع العائد.</li>
+              <li>تريد تشغيل إعلانات فقط بدون إصلاح النظام.</li>
+              <li>غير مستعد لتغيير طريقة القياس والمتابعة.</li>
+              <li>تريد وعودًا مضمونة قبل مراجعة البيانات.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="container">
+        <div class="curiosity-box">
+          <div class="badge">
+            <span></span>
+            المشكلة الحقيقية
+          </div>
+
+          <h2>لماذا تعمل الحملات… لكن النمو غير واضح؟</h2>
+
+          <p>
+            نفس الأعراض التي تظهر في مدير الإعلانات قد تكون نتيجة أسباب مختلفة تمامًا.
+            لذلك زيادة الميزانية أو تغيير الكريتيف قد لا يحل المشكلة إذا كان التسريب في مكان آخر.
+          </p>
+
+          <div class="comparison">
+            <div class="compare-card see">
+              <h3>ما يظهر لك</h3>
+              <ul>
+                <li>تكلفة الاستحواذ ترتفع شهرًا بعد شهر.</li>
+                <li>العائد على الإنفاق الإعلاني غير ثابت رغم كثرة الاختبارات.</li>
+                <li>العملاء يشترون مرة ولا يعودون.</li>
+                <li>متوسط قيمة الطلب منخفض ويضغط على الربحية.</li>
+                <li>كل منصة تقول رقمًا مختلفًا.</li>
+              </ul>
+            </div>
+
+            <div class="compare-card hidden">
+              <h3>ما قد يكون مخفيًا</h3>
+              <ul>
+                <li>تتبع غير موثوق أو أحداث ناقصة.</li>
+                <li>عرض لا يخلق قيمة كافية.</li>
+                <li>صفحة لا تكمل وعد الإعلان.</li>
+                <li>إدارة علاقات العملاء لا تحتوي على رحلات فعالة.</li>
+                <li>الإسناد التسويقي يقودك لقرارات خاطئة.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leakage">
+      <div class="container">
+        <div class="section-head center">
+          <h2>خريطة تسريب النمو</h2>
+          <p>
+            السؤال ليس هل يوجد تسريب؟ السؤال الأهم: أين التسريب الأكبر الذي يجب إصلاحه أولًا؟
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">📊</div>
+            <h3>تسريب التتبع</h3>
+            <p>المنصات لا ترى الحقيقة كاملة، فتُبنى قرارات التحسين على بيانات ناقصة.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🧠</div>
+            <h3>تسريب الرسالة</h3>
+            <p>الإعلان يجذب الانتباه، لكنه لا يبني سببًا كافيًا للشراء الآن.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🧭</div>
+            <h3>تسريب رحلة التحويل</h3>
+            <p>العميل يضغط ثم يخرج في الصفحة أو السلة أو الدفع بسبب احتكاك غير واضح.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🎁</div>
+            <h3>تسريب العرض</h3>
+            <p>المنتج جيد، لكن العرض لا يخلق قيمة أو وضوحًا كافيًا لاتخاذ القرار.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🛒</div>
+            <h3>تسريب قيمة الطلب</h3>
+            <p>لا توجد باقات أو عروض تكميلية تخفف ضغط تكلفة الاستحواذ وترفع قيمة الطلب.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🔁</div>
+            <h3>تسريب الاحتفاظ</h3>
+            <p>العميل يشتري مرة واحدة ثم يختفي بسبب غياب رحلات استرجاع وتكرار فعالة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="container">
+        <div class="section-head center">
+          <h2>منهجية تحويل التسريب إلى نمو</h2>
+          <p>
+            لا نبدأ بالحل. نبدأ بتحديد السبب، ثم نرتب الإصلاحات حسب الأثر والسرعة.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">🔍</div>
+            <h3>الكشف</h3>
+            <p>نحدد أعراض التسريب من تكلفة الاستحواذ، العائد، متوسط الطلب، قيمة العميل، معدل التحويل، وتكرار الشراء.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🧠</div>
+            <h3>التشخيص</h3>
+            <p>نفرق بين المشكلة الظاهرة والسبب الحقيقي: التتبع؟ العرض؟ رحلة التحويل؟ إدارة علاقات العملاء؟ الإعلانات؟</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🎯</div>
+            <h3>ترتيب الأولويات</h3>
+            <p>نرتب الإصلاحات حسب الأعلى أثرًا والأسرع تنفيذًا حتى لا تضيع وقتك في المكان الخطأ.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">⚙️</div>
+            <h3>الإصلاح</h3>
+            <p>ننفذ أو ندعم فريقك في إصلاح التسريب الحقيقي داخل النظام.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🚀</div>
+            <h3>التوسع</h3>
+            <p>بعد وضوح القياس وإصلاح التسريب، نوسع ما يعمل بثقة أكبر.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">📈</div>
+            <h3>المراجعة</h3>
+            <p>نربط القرارات بلوحة متابعة واضحة تساعدك تعرف ما الذي يحدث فعلًا.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="deliverables">
+      <div class="container">
+        <div class="section-head">
+          <h2>مش تقرير عام… مخرجات قابلة للتنفيذ</h2>
+          <p>
+            الهدف من التحليل أن تخرج بصورة واضحة: أين المشكلة؟ ماذا نصلح أولًا؟ وما خطة أول 90 يوم؟
+          </p>
+        </div>
+
+        <div class="offer-wrap">
+          <div class="offer-card">
+            <div class="badge">
+              <span></span>
+              تحليل تسريب النمو
+            </div>
+
+            <h3>تحليل عملي لنظام النمو الحالي</h3>
+
+            <p>
+              تشخيص عملي لنظام النمو الحالي في براندك، يكشف أين تضيع الميزانية ولماذا لا يتحول الإنفاق الإعلاني إلى نمو واضح ومتكرر.
+            </p>
+
+            <a href="#contact" class="btn btn-primary">احصل على تحليل تسريب النمو</a>
+          </div>
+
+          <div class="offer-card">
+            <h3>ماذا ستحصل؟</h3>
+
+            <ul class="check-list">
+              <li>خريطة تسريب النمو الحالية.</li>
+              <li>تقييم التتبع والإسناد التسويقي.</li>
+              <li>تحليل نقاط التسرب في رحلة التحويل.</li>
+              <li>فرص رفع متوسط قيمة الطلب.</li>
+              <li>فجوات إدارة علاقات العملاء ورحلات ما بعد الشراء.</li>
+              <li>أول 3 فرص سريعة للتحسين.</li>
+              <li>خارطة طريق لأول 90 يوم.</li>
+              <li>توصية واضحة: إعلانات؟ إدارة علاقات العملاء؟ تتبع؟ تحسين التحويل؟ عرض؟</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stages">
+      <div class="container">
+        <div class="section-head center">
+          <h2>مراحل التحليل</h2>
+          <p>
+            عملية واضحة، وليست مجرد مكالمة عامة. كل مرحلة لها هدف ومخرج.
+          </p>
+        </div>
+
+        <div class="stages">
+          <div class="stage">
+            <div class="stage-number">01</div>
+            <div>
+              <h3>لقطة عامة عن البيزنس ورحلة التحويل</h3>
+              <p>نفهم المنتج، الأسعار، القنوات، رحلة العميل، مؤشرات الأداء، وأين يظهر الألم حاليًا.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-number">02</div>
+            <div>
+              <h3>مراجعة التتبع والإسناد التسويقي</h3>
+              <p>نراجع جودة القياس، الأحداث، البيكسل، الربط مع السيرفر، تحليلات جوجل، والتضارب بين المنصات.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-number">03</div>
+            <div>
+              <h3>مراجعة الاستحواذ والكريتيف</h3>
+              <p>نراجع الحملات، الرسائل، الكريتيف، توزيع الميزانية، ومستوى وعي الجمهور.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-number">04</div>
+            <div>
+              <h3>مراجعة الاحتفاظ وقيمة الطلب</h3>
+              <p>نراجع إدارة علاقات العملاء، تكرار الشراء، السلات المتروكة، ما بعد الشراء، الباقات، والعروض التكميلية.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-number">05</div>
+            <div>
+              <h3>خارطة طريق النمو</h3>
+              <p>نحدد أولويات الإصلاح، الفرص السريعة، وما الذي يجب فعله خلال أول 90 يوم.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bonus">
+      <div class="container">
+        <div class="bonus-box">
+          <div class="badge">
+            <span></span>
+            إضافة مهمة
+          </div>
+
+          <h2>تحصل أيضًا على بطاقة تقييم تسريب النمو</h2>
+
+          <p>
+            بطاقة تقييم تقيس نظام النمو من 100 عبر أهم محاور النمو: التتبع، الإعلانات المدفوعة،
+            رحلة التحويل، العرض، إدارة علاقات العملاء، متوسط قيمة الطلب، والتقارير.
+            الهدف أن تعرف ليس فقط أين المشكلة، بل ما درجة خطورتها وأولوية إصلاحها.
+          </p>
+
+          <div class="grid-3" style="margin-top: 32px;">
+            <div class="card">
+              <div class="icon">📊</div>
+              <h3>درجة واضحة</h3>
+              <p>تقييم مختصر يساعدك ترى وضع النظام الحالي بدون تعقيد.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">⚠️</div>
+              <h3>أولوية الإصلاح</h3>
+              <p>نعرف هل تبدأ بالتتبع، إدارة علاقات العملاء، العرض، رحلة التحويل، أو الإعلانات.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">🗺️</div>
+              <h3>خارطة طريق عملية</h3>
+              <p>خطة واضحة لأول 90 يوم مبنية على التسريب الأكبر.</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 28px;">
+            <a href="#contact" class="btn btn-primary">احصل على بطاقة تقييم تسريب النمو</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="positioning">
+      <div class="container">
+        <div class="positioning-box">
+          <div class="badge">
+            <span></span>
+            لماذا Advera؟
+          </div>
+
+          <h2>
+            لسنا وكالة إعلانات تقليدية. نحن وكالة كشف وإصلاح تسريبات النمو.
+          </h2>
+
+          <p>
+            الوكالات التقليدية تبدأ من الحملات. Advera تبدأ من السؤال الأهم:
+            أين يتسرب النمو؟ ثم نربط الإعلانات المدفوعة، التتبع، إدارة علاقات العملاء،
+            متوسط قيمة الطلب، رحلات ما بعد الشراء، والتقارير داخل نظام واحد قابل للقياس والتحسين.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head center">
+          <h2>أسئلة مهمة قبل التحليل</h2>
+          <p>
+            لأن القرار لا يجب أن يكون مبنيًا على وعد عام. يجب أن تفهم كيف نعمل ومتى نكون مناسبين.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-card">
+            <h3>هل هذا تحليل أم خدمة إدارة إعلانات؟</h3>
+            <p>
+              البداية هي تحليل تسريب النمو. بعده نحدد هل تحتاج إدارة إعلانات، إصلاح التتبع،
+              رحلات إدارة علاقات العملاء، تحسين التحويل، أو نظام نمو كامل.
+            </p>
+          </div>
+
+          <div class="faq-card">
+            <h3>هل أحتاج أغير الوكالة الحالية؟</h3>
+            <p>
+              ليس بالضرورة. أحيانًا نعمل بجانب فريقك أو وكالتك الحالية لتحسين التشخيص،
+              التتبع، والتقارير. الهدف هو كشف التسريب لا استبدال الجميع.
+            </p>
+          </div>
+
+          <div class="faq-card">
+            <h3>هل المشكلة دائمًا في التتبع؟</h3>
+            <p>
+              لا. التتبع احتمال واحد فقط. أحيانًا يكون التسريب في العرض، الصفحة،
+              إدارة علاقات العملاء، أو ضعف تكرار الشراء. التحليل يحدد السبب الأقرب.
+            </p>
+          </div>
+
+          <div class="faq-card">
+            <h3>هل تضمنون النتائج؟</h3>
+            <p>
+              لا نعد بنتائج قبل مراجعة البيانات. نبدأ بكشف الوضع الحالي، ثم نحدد فرصًا واقعية
+              ومؤشرات أداء مبنية على أرقامك الفعلية.
+            </p>
+          </div>
+
+          <div class="faq-card">
+            <h3>هل هذا مناسب لكل البراندات؟</h3>
+            <p>
+              مناسب أكثر للبراندات التي لديها مبيعات وإنفاق إعلاني قائم، لكنها تعاني من ضعف الوضوح،
+              ارتفاع تكلفة الاستحواذ، ضعف التكرار، أو مشاكل في التتبع وإدارة علاقات العملاء.
+            </p>
+          </div>
+
+          <div class="faq-card">
+            <h3>ماذا يحدث بعد التحليل؟</h3>
+            <p>
+              تحصل على تصور واضح لأكبر نقطة تسريب، أولويات الإصلاح، وخارطة طريق لأول 90 يوم.
+              بعدها تقرر هل تريد تنفيذًا كاملًا أو دعمًا محددًا.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <h2>قبل ما تصرف أكثر… خلينا نعرف أين يتسرب النمو</h2>
+          <p>
+            املأ البيانات وسنراجع وضعك الأولي لنحدد هل أنت مناسب لتحليل تسريب النمو، وما أول نقطة تستحق الفحص.
+          </p>
+
+          <form class="form" onsubmit="handleSubmit(event)">
+            <input type="text" placeholder="الاسم" required />
+            <input type="email" placeholder="البريد الإلكتروني" required />
+            <input type="text" placeholder="اسم البراند / الشركة" required />
+
+            <select required>
+              <option value="">حجم الإنفاق الإعلاني الشهري</option>
+              <option>أقل من 25,000 ريال</option>
+              <option>25,000 - 75,000 ريال</option>
+              <option>75,000 - 200,000 ريال</option>
+              <option>أكثر من 200,000 ريال</option>
+            </select>
+
+            <select required>
+              <option value="">ما العرض الذي تراه الآن؟</option>
+              <option>تكلفة الاستحواذ مرتفعة</option>
+              <option>العائد على الإنفاق الإعلاني غير ثابت</option>
+              <option>العملاء لا يشترون مرة أخرى</option>
+              <option>تقارير المنصات متضاربة</option>
+              <option>متوسط قيمة الطلب منخفض</option>
+              <option>الحملات تعمل بشكل منفصل</option>
+            </select>
+
+            <textarea placeholder="اكتب باختصار: ماذا يحدث الآن؟ وما أكثر شيء محيرك في الأداء؟"></textarea>
+
+            <button class="btn btn-primary" type="submit">احصل على تحليل تسريب النمو</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>© 2026 Advera. جميع الحقوق محفوظة.</span>
+      <span>تسريبات النمو • التتبع • إدارة علاقات العملاء • الإعلانات • متوسط قيمة الطلب</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert("تم استلام طلبك بنجاح. الخطوة التالية: ربط النموذج مع واتساب أو نظام إدارة العملاء أو جوجل شيت.");
+    }
+  </script>
+
+</body>
+</html>
